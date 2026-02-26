@@ -1,19 +1,59 @@
-# MacVM
-VM for Mac Mini M1 or better
+# MacVM - Kiyomi Bot Dashboard
+
+Web-based management dashboard for VirtualBuddy macOS VMs and Kiyomi bot instances, deployable to Vercel.
+
+## Architecture
+
+```
+MacVM/
+├── VirtualBuddy/        # VirtualBuddy source (git submodule)
+├── dashboard/           # Next.js web dashboard (Vercel deployment)
+│   ├── src/app/         # Pages and API routes
+│   ├── src/components/  # React components
+│   └── ...
+├── vercel.json          # Vercel deployment config
+└── README.md
+```
+
+## Features
+
+- **VM Dashboard** - Monitor and manage macOS virtual machines
+- **Kiyomi Bot Panel** - Control your bot instance, view logs, configure settings
+- **API Endpoints** - RESTful API for programmatic access
+- **Vercel Deployment** - One-click deploy to Vercel
+
+## API Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/kiyomi/status` | Bot status |
+| POST | `/api/kiyomi/message` | Send message to bot |
+| GET | `/api/kiyomi/logs` | Fetch bot logs |
+| POST | `/api/kiyomi/restart` | Restart bot |
+| GET | `/api/vm/list` | List all VMs |
+
+## Deploy to Vercel
+
+1. Push this repo to GitHub
+2. Import the repo in [Vercel](https://vercel.com/new)
+3. Vercel auto-detects the Next.js framework from `vercel.json`
+4. Click **Deploy**
+
+## Local Development
+
+```bash
+cd dashboard
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
 
 ## VirtualBuddy
 
-This project uses [VirtualBuddy](https://github.com/insidegui/VirtualBuddy) to virtualize macOS 12+ on Apple Silicon (M1, M2, M3, M4).
+The [VirtualBuddy](https://github.com/insidegui/VirtualBuddy) submodule contains the native macOS VM application source. The dashboard acts as a web-based remote management interface that communicates with VirtualBuddy running on an Apple Silicon Mac.
 
-### Download
+### Download VirtualBuddy App
 
 - **Latest Release (v2.1):** [VirtualBuddy_v2.1-325.dmg](https://github.com/insidegui/VirtualBuddy/releases/download/2.1/VirtualBuddy_v2.1-325.dmg)
 - **All Releases:** [github.com/insidegui/VirtualBuddy/releases](https://github.com/insidegui/VirtualBuddy/releases)
-
-### Quick Start
-
-1. Download and install the DMG above
-2. Open VirtualBuddy
-3. Select a macOS version to create a new virtual machine
-4. Configure VM settings (CPU, memory, display) as needed
-5. Boot and enjoy your virtual macOS environment
