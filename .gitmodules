@@ -1,0 +1,3 @@
+[submodule "VirtualBuddy"]
+	path = VirtualBuddy
+	url = https://github.com/insidegui/VirtualBuddy.git
