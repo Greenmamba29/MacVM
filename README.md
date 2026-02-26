@@ -52,3 +52,8 @@ Open [http://localhost:3000](http://localhost:3000).
 ## VirtualBuddy
 
 The [VirtualBuddy](https://github.com/insidegui/VirtualBuddy) submodule contains the native macOS VM application source. The dashboard acts as a web-based remote management interface that communicates with VirtualBuddy running on an Apple Silicon Mac.
+
+### Download VirtualBuddy App
+
+- **Latest Release (v2.1):** [VirtualBuddy_v2.1-325.dmg](https://github.com/insidegui/VirtualBuddy/releases/download/2.1/VirtualBuddy_v2.1-325.dmg)
+- **All Releases:** [github.com/insidegui/VirtualBuddy/releases](https://github.com/insidegui/VirtualBuddy/releases)
