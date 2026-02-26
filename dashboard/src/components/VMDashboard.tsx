@@ -3,6 +3,42 @@
 import { useState } from "react";
 import StatusCard from "./StatusCard";
 
+interface RestoreImage {
+  os: string;
+  version: string;
+  buildNumber: string;
+  supported: boolean;
+  note?: string;
+}
+
+const restoreImages: RestoreImage[] = [
+  {
+    os: "macOS 12 Monterey",
+    version: "12.7.6",
+    buildNumber: "21H1320",
+    supported: true,
+    note: "Requires Apple Silicon Mac running macOS 13+ as host",
+  },
+  {
+    os: "macOS 13 Ventura",
+    version: "13.7.2",
+    buildNumber: "22H313",
+    supported: true,
+  },
+  {
+    os: "macOS 14 Sonoma",
+    version: "14.7.2",
+    buildNumber: "23H311",
+    supported: true,
+  },
+  {
+    os: "macOS 15 Sequoia",
+    version: "15.2",
+    buildNumber: "24C101",
+    supported: true,
+  },
+];
+
 interface VM {
   id: string;
   name: string;
@@ -40,6 +76,15 @@ const initialVMs: VM[] = [
     cpu: 0,
     memory: 0,
     disk: 15,
+  },
+  {
+    id: "vm-4",
+    name: "legacy-compat",
+    os: "macOS 12 Monterey",
+    status: "stopped",
+    cpu: 0,
+    memory: 0,
+    disk: 12,
   },
 ];
 
@@ -155,6 +200,38 @@ export default function VMDashboard() {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="bg-surface border border-border rounded-xl p-5">
+        <h3 className="font-semibold mb-3">Download macOS Restore Image</h3>
+        <p className="text-sm text-foreground/50 mb-4">
+          Download a macOS IPSW restore image to create a new VM. VirtualBuddy
+          uses Apple&apos;s Virtualization framework and supports macOS 12
+          Monterey and later on Apple Silicon.
+        </p>
+        <div className="space-y-3">
+          {restoreImages.map((image) => (
+            <div
+              key={image.os}
+              className="flex items-center justify-between bg-background border border-border rounded-lg px-4 py-3"
+            >
+              <div>
+                <p className="text-sm font-medium">{image.os}</p>
+                <p className="text-xs text-foreground/50">
+                  Version {image.version} ({image.buildNumber})
+                  {image.note && (
+                    <span className="ml-2 text-warning">{image.note}</span>
+                  )}
+                </p>
+              </div>
+              <button
+                className="px-4 py-1.5 rounded-lg text-xs font-medium bg-accent/20 text-accent-light hover:bg-accent/30 transition-colors"
+              >
+                Download IPSW
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="bg-surface border border-border rounded-xl p-5">

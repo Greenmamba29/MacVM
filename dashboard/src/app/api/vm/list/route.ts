@@ -30,6 +30,15 @@ export async function GET() {
         memory: 0,
         disk: 15,
       },
+      {
+        id: "vm-4",
+        name: "legacy-compat",
+        os: "macOS 12 Monterey",
+        status: "stopped",
+        cpu: 0,
+        memory: 0,
+        disk: 12,
+      },
     ],
   });
 }
